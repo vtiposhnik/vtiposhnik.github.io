@@ -1,0 +1,304 @@
+@font-face {
+    font-family: 'One Piece';
+    src: url('../assets/fonts/OnePiece.ttf') format('truetype'),
+        url('../assets/fonts/OnePiece.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --border-rd: 1rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button,
+input[type="submit"],
+input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+body {
+    font-family: "One Piece", sans-serif;
+    overflow-x: hidden; 
+    white-space: nowrap;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section {
+    margin: 5rem 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+header {
+    padding: 1rem;
+    font-size: 20px;
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .nav-list {
+        display: flex;
+        gap: 5px;
+
+    }
+
+    li {
+        list-style: none;
+    }
+}
+
+/*sdfsTEST*/
+.scroll-pages {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 92.6vh;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+.page {
+    flex: 0 0 100vw;
+    /* height: 100%; */
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    text-align: center;
+    
+}
+
+/*=============================================== CUSTOM UTIL ===============================================*/
+.sm-btn {
+    padding: 1px 6px;
+    margin-top: 3px;
+    border-radius: 8px;
+    border: 1px solid #000;
+}
+
+.sm-btn:hover {
+    padding: 2px 7px;
+}
+
+/*=============================================== HERO SECTION ===============================================*/
+#hero {
+    height: 10vh;
+    color: #000;
+    position: relative;
+
+    .text-box {
+        height: fit-content;
+        border: 1px solid #000;
+        padding-top: 20vh;
+
+        h2 {
+            font-size: 100px;
+            text-transform: uppercase;
+        }
+
+        span {
+            font-size: 40px;
+            font-weight: 600;
+            opacity: 85%;
+        }
+
+        p {
+            font-size: 20px;
+        }
+    }
+
+    .hero-pic {
+        height: fit-content;
+        position: relative;
+        border: 1px solid #000;
+        width: 32vw;
+
+
+        >img {
+            position: absolute;
+            /* top: -6rem; */
+            left: 39%;
+        }
+
+        /* top: 22.5vh; */
+
+    }
+}
+
+/*=============================================== EXPERIENCE SECTION =============================================== */
+#exp {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100vw;
+    padding: 2rem 0;
+
+    .wrapper {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        pre {
+            padding: 0 2rem;
+            background-color: #f7f7f7;
+            border-radius: var(--border-rd);
+            width: 50vw;
+        }
+    }
+}
+
+.fetch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    >div {
+        display: flex;
+        align-items: center;
+        align-self: start;
+        gap: 0.5rem;
+    }
+
+    .fetch-btn {
+        padding: 1px 6px;
+        margin-top: 3px;
+        border-radius: var(--border-rd);
+        border: 1px solid #000;
+    }
+
+    .fetch-btn:hover {
+        padding: 2px 7px;
+    }
+
+
+    .sm-btn.fold {
+        display: none;
+    }
+
+    .sm-btn.unfold {
+        display: none;
+    }
+
+}
+
+code {
+    display: block;
+    font-family: monospace;
+}
+
+.info {
+    transition: height 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+/* =============================================== PROJECTS =============================================*/
+#projects {
+
+    padding: 2rem 5rem;
+
+    .wrapper {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .card {
+        border: 1px solid #000;
+        border-radius: var(--border-rd);
+    }
+
+    .card>div:nth-child(2) {
+        border: 1px solid #000;
+        padding: 10rem;
+        position: absolute;
+    }
+
+
+    .slider {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        /* Fixed height for images */
+        overflow: hidden;
+        border-radius: 8px;
+    }
+
+    .slider-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        /* Start off-screen */
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+
+    .slider-image.active {
+        left: 0;
+        opacity: 1;
+    }
+
+    /* Slider buttons */
+    .slider-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+
+    .slider-button.prev {
+        left: 10px;
+    }
+
+    .slider-button.next {
+        right: 10px;
+    }
+
+    .slider-button:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+
+}

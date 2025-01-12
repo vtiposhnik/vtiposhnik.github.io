@@ -1,0 +1,28 @@
+{
+    "frontend": {
+        "name": "Akzhol Kasymov",
+        "skills": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "React"
+        ],
+        "experience": "1+ years of experience in front-end development."
+    },
+    "backend": {
+        "name": "Akzhol Kasymov",
+        "skills": [
+            "Node js",
+            "Express",
+            "JavaScript/Typescript",
+            {
+                "DBMS": [
+                    "MySQL",
+                    "MongoDB",
+                    "Firebase Firestore"
+                ]
+            }
+        ],
+        "experience": "0.5 years of experience in backend development."
+    }
+}
