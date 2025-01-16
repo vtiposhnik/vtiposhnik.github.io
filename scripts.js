@@ -113,28 +113,69 @@ function foldDiv(event, action) {
 
 
 /* =============================================== PROJECTS.JS ======================================================*/
-document.querySelectorAll('.card').forEach(card => {
-    const images = card.querySelectorAll('.slider-image');
-    const prevButton = card.querySelector('.slider-button.prev');
-    const nextButton = card.querySelector('.slider-button.next');
-    let current = 0;
-  
-    const updateSlider = (index) => {
-      images.forEach((img, i) => {
-        img.classList.toggle('active', i === index);
-      });
-    };
-  
-    prevButton.addEventListener('click', () => {
-      current = (current - 1 + images.length) % images.length;
-      updateSlider(current);
-    });
-  
-    nextButton.addEventListener('click', () => {
-      current = (current + 1) % images.length;
-      updateSlider(current);
-    });
-  
-    updateSlider(current);
-  });
-  
+// document.querySelectorAll('.card').forEach(card => {
+//     const images = card.querySelectorAll('.slider-image');
+//     const prevButton = card.querySelector('.slider-btn.prev');
+//     const nextButton = card.querySelector('.slider-btn.next');
+//     let current = 0;
+
+//     const updateSlider = (index) => {
+//       images.forEach((img, i) => {
+//         img.classList.toggle('active', i === index);
+//       });
+//     };
+
+//     prevButton.addEventListener('click', () => {
+//       current = (current - 1 + images.length) % images.length;
+//       updateSlider(current);
+//     });
+
+//     nextButton.addEventListener('click', () => {
+//       current = (current + 1) % images.length;
+//       updateSlider(current);
+//     });
+
+//     updateSlider(current);
+//   });
+
+const images = document.querySelectorAll('.project-img')
+const title = document.getElementById('project-title');
+const description = document.getElementById('project-description');
+const prevBtn = document.getElementById('prev')
+const nextBtn = document.getElementById('next')
+
+const projects = [
+    { title: 'Project Title 1', description: 'Description of Project 1.' },
+    { title: 'Project Title 2', description: 'Description of Project 2.' },
+    { title: 'Project Title 3', description: 'Description of Project 3.' },
+];
+
+let current = 0;
+
+function slide(index) {
+    images.forEach((img, i) => {
+        img.classList.remove('active', 'previous', 'next')
+
+        if (i === index) {
+            img.classList.add('active')
+        } else if (i === (index + 1) % images.length) {
+            img.classList.add('next')
+        } else if (i === (index - 1 + images.length) % images.length) {
+            img.classList.add('previous')
+        }
+    })
+}
+prevBtn.addEventListener('click', () => {
+    current = (current - 1 + images.length) % images.length;
+    console.log('prev btn');
+    slide(current);
+});
+
+nextBtn.addEventListener('click', () => {
+    current = (current + 1) % images.length;
+    console.log('next btn');
+    slide(current);
+});
+
+// init
+slide(current)
