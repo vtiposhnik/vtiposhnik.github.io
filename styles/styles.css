@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'One Piece';
-    src: url('../assets/fonts/OnePiece.ttf') format('truetype');
+    src: url('/assets/fonts/OnePiece.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -9,21 +9,21 @@
     font-family: 'Poppins Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('Poppins Regular'), url('../assets/fonts/Poppins-Regular.woff') format('woff');
+    src: local('Poppins Regular'), url('/assets/fonts/Poppins-Regular.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Poppins ExtraLight';
     font-style: normal;
     font-weight: normal;
-    src: local('Poppins ExtraLight'), url('../assets/fonts/Poppins-ExtraLight.woff') format('woff');
+    src: local('Poppins ExtraLight'), url('/assets/fonts/Poppins-ExtraLight.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Space Grotesk';
     font-style: normal;
     font-weight: normal;
-    src: url('../assets/fonts/SpaceGrotesk-Regular.ttf') format('truetype');
+    src: url('/assets/fonts/SpaceGrotesk-Regular.ttf') format('truetype');
 }
 
 
