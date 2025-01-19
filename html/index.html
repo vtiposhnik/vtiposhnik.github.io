@@ -1,0 +1,129 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/pie-chart.css" />
+    <title>Portfolio</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="#hero">About</a></li>
+                <li><a href="#exp">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contacts">Contact</a></li>
+                <li><a href="#">Credits</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <canvas id="canva"></canvas>
+
+
+        <section id="hero">
+            <div class="text-box">
+                <h2>Akzhol Kasymov</h2>
+                <span>Web Developer</span>
+                <p>Genius(no), Billionaire(sure), Playboy(ask my homies?), Philanthropist(what is that?)</p>
+            </div>
+        </section>
+        <!-- <div class="tooltip"></div> -->
+        <section id="exp">
+            <h1>Experience</h1>
+            <div class="wrapper">
+                <aside class="scroll-line">
+
+                </aside>
+
+                <article class="exp-content">
+                    <div class="exp-info">
+                        <h3>Solva Technology (Internship)</h3>
+                        <span>Frontend Developer/Jan 2025 - Present</span>
+                        <ul class="exp-ul">
+                            <li>Developed a full-stack enterprise applications using React</li>
+                            <li>Implemented essential software development practices </li>
+                        </ul>
+                    </div>
+                    <div class="exp-info">
+                        <h3>ICEBERG-Service</h3>
+                        <span>Frontend Developer/September 2024 - December 2024</span>
+                        <ul class="exp-ul">
+                            <li>Developed a full-stack enterprise applications using React</li>
+                            <li>Implemented essential software development practices.</li>
+                        </ul>
+                    </div>
+                    <div class="exp-info">
+                        <h3>AitecOne (Internship)</h3>
+                        <span>Frontend Developer/Jan 2023 - March 2024</span>
+                        <ul class="exp-ul">
+                            <li>Developed a full-stack enterprise applications using React</li>
+                            <li>Implemented essential software development practices.</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section id="projects">
+            <div class="projects-wrapper">
+                <div class="slider">
+                    <img class="project-img active" src="../assets/imgs/projects/chat-app.png"
+                        alt="Chat Web App Screenshot">
+                    <img class="project-img" src="../assets/imgs/projects/travel-app.png"
+                        alt="Travel Agency Web App Screenshot">
+                    <img class="project-img" src="../assets/imgs/projects/travel-app2.png"
+                        alt="Travel Agency Web App Screenshot 2nd">
+                </div>
+                <div class="description">
+                    <h2 id="project-title">Project Title 1</h2>
+                    <p id="project-description">Description of Project 1.</p>
+                    <div class="controls">
+                        <button class="sm-btn" id="prev">Previous</button>
+                        <button class="sm-btn" id="next">Next</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section id="projects">
+                <div class="wrapper">
+                    <div class="card">
+                        <div class="slider">
+                            <img class="slider-image active" src="./assets/imgs/projects/chat-app.png" alt="Chat Web App Screenshot">
+                            <img class="slider-image" src="./assets/imgs/projects/chat-app2.png" alt="Chat Web App Screenshot 2nd">
+                            <img class="slider-image" src="./assets/imgs/projects/chat-app3.png" alt="Chat Web App Screenshot 3rd">
+                            <button class="slider-btn prev"><img src="./assets/icons/arrow.svg" width="10" height="10" alt="arrow icon"></button>
+                            <button class="slider-btn next"><img src="./assets/icons/arrow.svg" width="10" height="10" alt="arrow icon"></button>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">Project Title 1</h3>
+                            <p class="card-description">Brief description of the project.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="slider">
+                            <img class="slider-image active" src="./assets/imgs/projects/travel-app.png" alt="Travel Agency Web App Screenshot">
+                            <img class="slider-image" src="./assets/imgs/projects/travel-app2.png" alt="Travel Agency Web App Screenshot 2nd">
+                            <img class="slider-image" src="./assets/imgs/projects/travel-app3.png" alt="Travel Agency Web App Screenshot 3rd">
+                            <button class="slider-btn prev"><img src="./assets/icons/arrow.svg" width="10" height="10" alt="arrow icon"></button>
+                            <button class="slider-btn next"><img src="./assets/icons/arrow.svg" width="10" height="10" alt="arrow icon"></button>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">Project Title 2</h3>
+                            <p class="card-description">Brief description of the project.</p>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+
+    </main>
+
+    <script src="/scripts/animate.js"></script>
+    <script src="/scripts/scripts.js"></script>
+</body>
+
+</html>

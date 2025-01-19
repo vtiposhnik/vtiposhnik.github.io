@@ -44,7 +44,7 @@ fetchBtn.forEach((element) => {
 async function fetchInfo(parentDiv) {
     try {
         console.log(parentDiv);
-        const res = await fetch('./assets/about.json')
+        const res = await fetch('../assets/about.json')
         let jsonString = '';
 
         if (!res.ok) {

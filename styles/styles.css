@@ -1,10 +1,32 @@
 @font-face {
     font-family: 'One Piece';
-    src: url('../assets/fonts/OnePiece.ttf') format('truetype'),
-        url('../assets/fonts/OnePiece.ttf') format('truetype');
+    src: url('../assets/fonts/OnePiece.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'Poppins Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Poppins Regular'), url('../assets/fonts/Poppins-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Poppins ExtraLight';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Poppins ExtraLight'), url('../assets/fonts/Poppins-ExtraLight.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../assets/fonts/SpaceGrotesk-Regular.ttf') format('truetype');
+}
+
+
 
 :root {
     --border-rd: 1rem;
@@ -14,6 +36,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
+
 }
 
 button,
@@ -41,19 +65,19 @@ main {
     align-items: center;
 }
 
-section {
-    margin: 5rem 0;
-}
-
 h1 {
     text-align: center;
 }
 
-a {
+a,
+a:visited,
+a:hover,
+a:active {
     text-decoration: none;
+    color: inherit;
 }
 
-li {
+li:not(.exp-ul > li) {
     list-style: none;
 }
 
@@ -63,17 +87,29 @@ img {
 }
 
 header {
-    padding: 1rem;
-    font-size: 20px;
+    z-index: 100;
+    left: 50vw;
+    position: fixed;
+    padding: 0.5rem;
+    font-size: 22px;
+    transform: translateX(-50%);
 
     nav {
+
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 4rem;
+        padding: 1.5rem 3rem;
+        margin: auto;
+        width: fit-content;
+        background-color: rgba(176, 176, 176, 0.259);
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .nav-list {
         display: flex;
-        gap: 5px;
+        gap: 0.5rem;
 
     }
 
@@ -82,26 +118,15 @@ header {
     }
 }
 
-/*sdfsTEST*/
-.scroll-pages {
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-    height: 92.6vh;
-    scroll-behavior: smooth;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-}
+/*TEST*/
 
-.page {
-    flex: 0 0 100vw;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
 
+/*===============================================    CANVAS   ===============================================*/
+#canva {
+    position: absolute;
+    top: 0;
+    z-index: -10;
+}
 
 /*=============================================== CUSTOM UTIL ===============================================*/
 .sm-btn {
@@ -117,11 +142,14 @@ header {
 
 /*=============================================== HERO SECTION ===============================================*/
 #hero {
+    padding: 5rem 0;
+    height: 100vh;
     color: #000;
-    position: relative;
+    text-align: center;
 
     .text-box {
         height: fit-content;
+
         /* border: 1px solid #000; */
         padding-top: 20vh;
 
@@ -159,75 +187,56 @@ header {
 
 /*=============================================== EXPERIENCE SECTION =============================================== */
 #exp {
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 100vw;
-    padding: 2rem 0;
+    height: 100vh;
+    font-family: 'Space Grotesk';
+    font-size: 16px;
+    line-height: 23px;
+    /* width: 100%; */
+
+    >h1 {
+        font-weight: bold;
+        text-align: left;
+        margin: 3.5rem 0;
+        font-size: 4rem;
+    }
 
     .wrapper {
+        padding: 2rem;
+        /* border-radius: var(--border-rd);
+        background-color: #8080805c; */
         display: flex;
-        justify-content: space-evenly;
-        align-items: center;
+        gap: 3rem;
 
-        pre {
-            font-size: 17px;
-            padding: 0 2rem;
-            background-color: #f7f7f7;
-            border-radius: var(--border-rd);
-            width: 50vw;
+    }
+
+    .scroll-line {
+        width: 0px;
+        opacity: 0.5;
+        border: 1.5px solid black;
+        border-radius: var(--border-rd);
+    }
+
+    .exp-content {
+        width: 60vw;
+
+        .exp-info+.exp-info {
+            margin-top: 1.5rem;
+        }
+
+        .exp-ul>li {
+
+            width: fit-content;
+            text-wrap: wrap;
+
         }
     }
-}
 
-.fetch {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-
-    >div {
-        display: flex;
-        align-items: center;
-        align-self: start;
-        gap: 0.5rem;
-    }
-
-    .fetch-btn {
-        padding: 1px 6px;
-        margin-top: 3px;
-        border-radius: var(--border-rd);
-        border: 1px solid #000;
-    }
-
-    .fetch-btn:hover {
-        padding: 2px 7px;
-    }
-
-
-    .sm-btn.fold {
-        display: none;
-    }
-
-    .sm-btn.unfold {
-        display: none;
-    }
-
-}
-
-code {
-    display: block;
-    font-family: monospace;
-}
-
-.info {
-    transition: height 0.3s ease-in-out;
-    overflow: hidden;
 }
 
 /* =============================================== PROJECTS =============================================*/
 #projects {
+    height: 100vh;
+
     .projects-wrapper {
         display: flex;
     }
