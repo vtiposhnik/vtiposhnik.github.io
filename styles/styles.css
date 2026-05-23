@@ -30,6 +30,25 @@
 
 :root {
     --border-rd: 1rem;
+    --bg: #ffffff;
+    --text: #000000;
+    --nav-bg: rgba(176, 176, 176, 0.259);
+    --border-subtle: rgba(0, 0, 0, 0.12);
+    --text-muted: rgba(0, 0, 0, 0.5);
+    --skill-border: #000;
+    --skill-hover-bg: #000;
+    --skill-hover-text: #fff;
+}
+
+body.dark {
+    --bg: #0d0d0d;
+    --text: #f0f0f0;
+    --nav-bg: rgba(30, 30, 30, 0.6);
+    --border-subtle: rgba(255, 255, 255, 0.12);
+    --text-muted: rgba(255, 255, 255, 0.45);
+    --skill-border: #f0f0f0;
+    --skill-hover-bg: #f0f0f0;
+    --skill-hover-text: #0d0d0d;
 }
 
 * {
@@ -37,7 +56,6 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-
 }
 
 button,
@@ -48,7 +66,7 @@ input[type="reset"] {
     border: none;
     padding: 0;
     font: inherit;
-    cursor: pointer;
+    cursor: none;
     outline: inherit;
 }
 
@@ -56,7 +74,83 @@ body {
     font-family: "One Piece", sans-serif;
     overflow-x: hidden;
     white-space: nowrap;
-    height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.35s ease, color 0.35s ease;
+    cursor: none;
+}
+
+/* =============================================== CURSOR =============================================== */
+#cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--text);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: background 0.35s ease, opacity 0.2s ease, transform 0.1s ease;
+}
+
+#cursor-ring {
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid var(--text);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: border-color 0.35s ease, opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+#cursor-ring.expanded {
+    width: 48px;
+    height: 48px;
+}
+
+/* =============================================== DARK TOGGLE =============================================== */
+.dark-btn {
+    font-size: 18px;
+    opacity: 0.7;
+    cursor: none;
+    transition: opacity 0.2s, transform 0.2s;
+    line-height: 1;
+}
+
+.dark-btn:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* =============================================== SCROLL REVEAL =============================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =============================================== TYPEWRITER CURSOR =============================================== */
+#typewriter::after {
+    content: '|';
+    animation: blink 0.75s step-end infinite;
+    margin-left: 2px;
+    opacity: 0.7;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 main {
@@ -102,9 +196,10 @@ header {
         padding: 1.5rem 3rem;
         margin: auto;
         width: fit-content;
-        background-color: rgba(176, 176, 176, 0.259);
+        background-color: var(--nav-bg);
         display: flex;
         justify-content: center;
+        transition: background-color 0.35s ease;
     }
 
     .nav-list {
@@ -133,7 +228,8 @@ header {
     padding: 1px 6px;
     margin-top: 3px;
     border-radius: 8px;
-    border: 1px solid #000;
+    border: 1px solid var(--text);
+    transition: background 0.2s, color 0.2s;
 }
 
 .sm-btn:hover {
@@ -144,7 +240,6 @@ header {
 #hero {
     height: 100vh;
     width: 100%;
-    color: #000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -221,7 +316,7 @@ header {
     .scroll-line {
         width: 0px;
         opacity: 0.5;
-        border: 1.5px solid black;
+        border: 1.5px solid var(--text);
         border-radius: var(--border-rd);
         flex-shrink: 0;
     }
@@ -375,18 +470,18 @@ header {
     }
 
     .skill-tag {
-        border: 1.5px solid #000;
+        border: 1.5px solid var(--skill-border);
         border-radius: 2rem;
         padding: 0.3rem 1rem;
         font-size: 0.9rem;
         white-space: normal;
-        transition: background 0.2s, color 0.2s;
-        cursor: default;
+        transition: background 0.2s, color 0.2s, border-color 0.35s, opacity 0.65s, transform 0.65s;
+        cursor: none;
     }
 
     .skill-tag:hover {
-        background: #000;
-        color: #fff;
+        background: var(--skill-hover-bg);
+        color: var(--skill-hover-text);
     }
 }
 
@@ -429,7 +524,7 @@ header {
         gap: 2rem;
         font-family: 'Space Grotesk';
         padding-bottom: 1.2rem;
-        border-bottom: 1px solid rgba(0,0,0,0.15);
+        border-bottom: 1px solid var(--border-subtle);
         transition: opacity 0.2s;
 
         &:hover {
@@ -454,7 +549,7 @@ header {
 #credits {
     width: 100%;
     padding: 4rem 10vw;
-    border-top: 1px solid rgba(0,0,0,0.1);
+    border-top: 1px solid var(--border-subtle);
     font-family: 'Space Grotesk';
 
     h2 {
