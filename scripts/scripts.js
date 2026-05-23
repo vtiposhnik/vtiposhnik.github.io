@@ -1,3 +1,13 @@
+/* =============================================== PAGE ENTRANCE =============================================== */
+
+const loader = document.getElementById('page-loader');
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        loader.classList.add('loaded');
+        loader.addEventListener('transitionend', () => loader.remove(), { once: true });
+    }, 120);
+});
+
 /* =============================================== DARK MODE =============================================== */
 
 const darkToggle = document.getElementById('dark-toggle');
@@ -19,7 +29,6 @@ darkToggle.addEventListener('click', () => {
 
 const cursorDot = document.getElementById('cursor-dot');
 const cursorRing = document.getElementById('cursor-ring');
-
 let mouseX = 0, mouseY = 0;
 let ringX = 0, ringY = 0;
 
@@ -58,7 +67,6 @@ document.querySelectorAll('a, button').forEach(el => {
 const typewriterEl = document.getElementById('typewriter');
 const typewriterText = 'Web Developer';
 let twIndex = 0;
-let twStarted = false;
 
 function typeNext() {
     if (twIndex <= typewriterText.length) {
@@ -71,7 +79,7 @@ function typeNext() {
 setTimeout(() => {
     typewriterEl.textContent = '';
     typeNext();
-}, 400);
+}, 650);
 
 /* =============================================== SCROLL REVEAL =============================================== */
 
@@ -84,6 +92,41 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* =============================================== ACTIVE NAV =============================================== */
+
+const navLinks = document.querySelectorAll('.nav-list a');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navLinks.forEach(link => {
+                link.classList.toggle(
+                    'nav-active',
+                    link.getAttribute('href') === `#${entry.target.id}`
+                );
+            });
+        }
+    });
+}, {
+    rootMargin: '-35% 0px -55% 0px',
+    threshold: 0
+});
+
+document.querySelectorAll('section[id], footer[id]').forEach(el => sectionObserver.observe(el));
+
+/* =============================================== SCROLL HINT =============================================== */
+
+const scrollHint = document.querySelector('.scroll-hint');
+if (scrollHint) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 80) {
+            scrollHint.classList.add('hidden');
+        } else {
+            scrollHint.classList.remove('hidden');
+        }
+    }, { passive: true });
+}
 
 /* =============================================== SKILLS =============================================== */
 
@@ -124,4 +167,3 @@ async function loadSkills() {
 }
 
 loadSkills();
-

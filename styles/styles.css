@@ -648,3 +648,217 @@ header {
         opacity: 0.4;
     }
 }
+
+/* =============================================== PAGE LOADER =============================================*/
+#page-loader {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 99999;
+    transition: opacity 0.65s ease;
+    pointer-events: none;
+}
+
+#page-loader.loaded {
+    opacity: 0;
+}
+
+/* =============================================== SCROLL HINT =============================================*/
+.scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Space Grotesk';
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.45;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.scroll-hint.hidden {
+    opacity: 0;
+}
+
+.scroll-arrow {
+    width: 1px;
+    height: 32px;
+    background: var(--text);
+    position: relative;
+    animation: scrollBounce 1.6s ease-in-out infinite;
+}
+
+.scroll-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 6px;
+    height: 6px;
+    border-right: 1px solid var(--text);
+    border-bottom: 1px solid var(--text);
+}
+
+@keyframes scrollBounce {
+    0%, 100% { transform: scaleY(1); opacity: 0.45; }
+    50% { transform: scaleY(0.6); opacity: 0.2; }
+}
+
+/* =============================================== ACTIVE NAV =============================================*/
+header .nav-list a.nav-active {
+    opacity: 1;
+}
+
+header .nav-list a.nav-active::after {
+    transform: scaleX(1);
+}
+
+/* =============================================== MOBILE RESPONSIVENESS =============================================*/
+@media (max-width: 768px) {
+    /* Hide custom cursor on touch devices */
+    #cursor-dot,
+    #cursor-ring {
+        display: none;
+    }
+
+    body {
+        cursor: auto;
+    }
+
+    button,
+    a {
+        cursor: pointer !important;
+    }
+
+    /* Nav */
+    header {
+        font-size: 13px;
+        width: 96vw;
+        left: 50%;
+        padding: 0.3rem;
+    }
+
+    header nav {
+        padding: 0.6rem 1rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    header nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-list {
+        gap: 0;
+        white-space: nowrap;
+    }
+
+    .nav-list a {
+        padding: 0.25rem 0.5rem;
+    }
+
+    .nav-list li:last-child {
+        margin-left: 0.25rem;
+        padding-left: 0.5rem;
+    }
+
+    /* Hero */
+    .hero-pic {
+        display: none;
+    }
+
+    #hero .hero-inner {
+        padding-left: 6vw;
+        max-width: 90vw;
+    }
+
+    #hero .text-box h2 {
+        font-size: clamp(2.2rem, 11vw, 3.5rem);
+    }
+
+    #hero .text-box span {
+        font-size: clamp(1.1rem, 5vw, 1.6rem);
+    }
+
+    #hero .text-box p {
+        font-size: 0.9rem;
+    }
+
+    .scroll-hint {
+        display: none;
+    }
+
+    /* Experience */
+    #exp > h1,
+    #exp .wrapper {
+        width: 90vw;
+    }
+
+    .scroll-line {
+        display: none;
+    }
+
+    /* Projects */
+    #projects > h1,
+    #projects .projects-grid {
+        width: 90vw;
+    }
+
+    #projects .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Skills */
+    #skills > h1,
+    #skills .skills-wrapper {
+        width: 90vw;
+    }
+
+    #skills .skills-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    /* Contact */
+    #contacts > h1,
+    #contacts .contacts-tagline,
+    #contacts .contacts-links {
+        width: 90vw;
+    }
+
+    #contacts .contact-item {
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    #contacts .contact-item .contact-value {
+        font-size: 1rem;
+    }
+
+    /* Credits */
+    #credits {
+        padding: 3rem 5vw;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 11px;
+    }
+
+    #hero .text-box h2 {
+        font-size: clamp(1.8rem, 12vw, 2.8rem);
+    }
+
+    #projects .project-card {
+        aspect-ratio: 4 / 3;
+    }
+}
