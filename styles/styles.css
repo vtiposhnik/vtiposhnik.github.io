@@ -142,71 +142,80 @@ header {
 
 /*=============================================== HERO SECTION ===============================================*/
 #hero {
-    padding: 5rem 0;
     height: 100vh;
+    width: 100%;
     color: #000;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .hero-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80vw;
+        gap: 2rem;
+    }
 
     .text-box {
-        height: fit-content;
-
-        /* border: 1px solid #000; */
-        padding-top: 20vh;
+        flex: 1;
 
         h2 {
-            font-size: 100px;
+            font-size: clamp(3rem, 7vw, 100px);
             text-transform: uppercase;
+            white-space: normal;
         }
 
         span {
-            font-size: 40px;
+            font-size: clamp(1.5rem, 3vw, 40px);
             font-weight: 600;
             opacity: 85%;
         }
 
         p {
-            font-size: 20px;
+            font-size: clamp(0.9rem, 1.4vw, 20px);
+            white-space: normal;
+            margin-top: 0.5rem;
+            opacity: 0.7;
         }
     }
 
     .hero-pic {
-        height: fit-content;
-        position: relative;
-        /* border: 1px solid #000; */
-        width: 32vw;
+        flex-shrink: 0;
+        width: clamp(200px, 28vw, 380px);
 
-        >img {
-            margin-top: -6px;
-            position: absolute;
-            left: 39%;
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
-
-        /* top: 22.5vh; */
     }
 }
 
 /*=============================================== EXPERIENCE SECTION =============================================== */
 #exp {
-    height: 100vh;
+    min-height: 100vh;
+    width: 100%;
     font-family: 'Space Grotesk';
     font-size: 16px;
     line-height: 23px;
-    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     >h1 {
         font-weight: bold;
         text-align: left;
         margin: 3.5rem 0;
         font-size: 4rem;
+        width: 80vw;
     }
 
     .wrapper {
-        padding: 2rem;
-        /* border-radius: var(--border-rd);
-        background-color: #8080805c; */
         display: flex;
         gap: 3rem;
-
+        width: 80vw;
+        padding-bottom: 4rem;
     }
 
     .scroll-line {
@@ -214,20 +223,19 @@ header {
         opacity: 0.5;
         border: 1.5px solid black;
         border-radius: var(--border-rd);
+        flex-shrink: 0;
     }
 
     .exp-content {
-        width: 60vw;
+        flex: 1;
 
         .exp-info+.exp-info {
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
 
         .exp-ul>li {
-
-            width: fit-content;
             text-wrap: wrap;
-
+            white-space: normal;
         }
     }
 
@@ -236,30 +244,43 @@ header {
 /* =============================================== PROJECTS =============================================*/
 #projects {
     height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    >h1 {
+        font-weight: bold;
+        text-align: left;
+        margin: 3.5rem 0;
+        font-size: 4rem;
+        width: 80vw;
+    }
 
     .projects-wrapper {
         display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+        width: 80vw;
     }
 
     .slider {
-        flex: 80%;
-
+        flex: 1;
         display: flex;
         position: relative;
-        height: 70vh;
-        width: 60vw;
+        height: 55vh;
         overflow: hidden;
+        border-radius: var(--border-rd);
     }
 
     .project-img {
         position: absolute;
-
         width: 100%;
+        height: 100%;
+        object-fit: cover;
         left: 100%;
         opacity: 0;
-
         transition: all 0.5s ease-in-out;
-
         border-radius: var(--border-rd);
     }
 
@@ -280,9 +301,183 @@ header {
     }
 
     .description {
-        flex: 20%;
+        width: 240px;
+        flex-shrink: 0;
+        font-family: 'Space Grotesk';
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        padding-top: 0.5rem;
+
+        h2 {
+            font-size: 1.4rem;
+            white-space: normal;
+        }
+
+        p {
+            font-size: 0.95rem;
+            white-space: normal;
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+
+        .controls {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+    }
+}
+
+/* =============================================== SKILLS =============================================*/
+#skills {
+    min-height: 60vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 4rem;
+
+    >h1 {
+        font-weight: bold;
+        text-align: left;
+        margin: 3.5rem 0;
+        font-size: 4rem;
+        width: 80vw;
     }
 
+    .skills-wrapper {
+        display: flex;
+        gap: 4rem;
+        width: 80vw;
+        flex-wrap: wrap;
+    }
 
+    .skills-group {
+        flex: 1;
+        min-width: 200px;
+        font-family: 'Space Grotesk';
 
+        h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+    }
+
+    .skills-list {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+
+    .skill-tag {
+        border: 1.5px solid #000;
+        border-radius: 2rem;
+        padding: 0.3rem 1rem;
+        font-size: 0.9rem;
+        white-space: normal;
+        transition: background 0.2s, color 0.2s;
+        cursor: default;
+    }
+
+    .skill-tag:hover {
+        background: #000;
+        color: #fff;
+    }
+}
+
+/* =============================================== CONTACT =============================================*/
+#contacts {
+    min-height: 60vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 4rem;
+
+    >h1 {
+        font-weight: bold;
+        text-align: left;
+        margin: 3.5rem 0;
+        font-size: 4rem;
+        width: 80vw;
+    }
+
+    .contacts-tagline {
+        font-family: 'Space Grotesk';
+        font-size: 1.2rem;
+        opacity: 0.6;
+        margin-bottom: 3rem;
+        width: 80vw;
+        white-space: normal;
+    }
+
+    .contacts-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 80vw;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: baseline;
+        gap: 2rem;
+        font-family: 'Space Grotesk';
+        padding-bottom: 1.2rem;
+        border-bottom: 1px solid rgba(0,0,0,0.15);
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 0.6;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+            min-width: 80px;
+        }
+
+        .contact-value {
+            font-size: 1.3rem;
+        }
+    }
+}
+
+/* =============================================== CREDITS / FOOTER =============================================*/
+#credits {
+    width: 100%;
+    padding: 4rem 10vw;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    font-family: 'Space Grotesk';
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .credits-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        font-size: 0.95rem;
+        opacity: 0.7;
+        margin-bottom: 2rem;
+
+        li {
+            white-space: normal;
+        }
+    }
+
+    .credits-copy {
+        font-size: 0.85rem;
+        opacity: 0.4;
+    }
 }

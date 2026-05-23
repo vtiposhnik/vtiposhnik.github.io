@@ -15,8 +15,9 @@
                 <li><a href="#hero">About</a></li>
                 <li><a href="#exp">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#contacts">Contact</a></li>
-                <li><a href="#">Credits</a></li>
+                <li><a href="#credits">Credits</a></li>
             </ul>
         </nav>
     </header>
@@ -24,51 +25,57 @@
     <main>
         <canvas id="canva"></canvas>
 
-
         <section id="hero">
-            <div class="text-box">
-                <h2>Akzhol Kasymov</h2>
-                <span>Web Developer</span>
-                <p>Genius(no), Billionaire(sure), Playboy(ask my homies?), Philanthropist(what is that?)</p>
+            <div class="hero-inner">
+                <div class="text-box">
+                    <h2>Akzhol Kasymov</h2>
+                    <span>Web Developer</span>
+                    <p>Genius(no), Billionaire(sure), Playboy(ask my homies?), Philanthropist(what is that?)</p>
+                </div>
+                <div class="hero-pic">
+                    <img src="./assets/imgs/portfolio-removebg.png" alt="Akzhol Kasymov" />
+                </div>
             </div>
         </section>
-        <!-- <div class="tooltip"></div> -->
+
         <section id="exp">
             <h1>Experience</h1>
             <div class="wrapper">
-                <aside class="scroll-line">
-
-                </aside>
-
+                <aside class="scroll-line"></aside>
                 <article class="exp-content">
                     <div class="exp-info">
                         <h3>Solva Technology (Internship)</h3>
-                        <span>Frontend Developer/Jan 2025 - Present</span>
+                        <span>Frontend Developer / Jan 2025 – Present</span>
                         <ul class="exp-ul">
-                            <li>Developed a full-stack enterprise applications using React</li>
-                            <li>Implemented essential software development practices </li>
+                            <li>Built and maintained React-based features for an enterprise fintech platform</li>
+                            <li>Collaborated with design and backend teams using Agile methodology</li>
+                            <li>Wrote reusable UI components and improved codebase consistency</li>
                         </ul>
                     </div>
                     <div class="exp-info">
                         <h3>ICEBERG-Service</h3>
-                        <span>Frontend Developer/September 2024 - December 2024</span>
+                        <span>Frontend Developer / September 2024 – December 2024</span>
                         <ul class="exp-ul">
-                            <li>Developed a full-stack enterprise applications using React</li>
-                            <li>Implemented essential software development practices.</li>
+                            <li>Developed responsive UI for a service-management web application</li>
+                            <li>Integrated REST APIs and handled async data fetching with React hooks</li>
+                            <li>Optimized performance by reducing unnecessary re-renders</li>
                         </ul>
                     </div>
                     <div class="exp-info">
                         <h3>AitecOne (Internship)</h3>
-                        <span>Frontend Developer/Jan 2023 - March 2024</span>
+                        <span>Frontend Developer / Jan 2023 – March 2024</span>
                         <ul class="exp-ul">
-                            <li>Developed a full-stack enterprise applications using React</li>
-                            <li>Implemented essential software development practices.</li>
+                            <li>Assisted in building and styling multi-page websites from Figma designs</li>
+                            <li>Gained hands-on experience with version control (Git) and code review</li>
+                            <li>Learned fundamentals of component-based architecture with React</li>
                         </ul>
                     </div>
                 </article>
             </div>
         </section>
+
         <section id="projects">
+            <h1>Projects</h1>
             <div class="projects-wrapper">
                 <div class="slider">
                     <img class="project-img active" src="./assets/imgs/projects/chat-app.png"
@@ -76,11 +83,11 @@
                     <img class="project-img" src="./assets/imgs/projects/travel-app.png"
                         alt="Travel Agency Web App Screenshot">
                     <img class="project-img" src="./assets/imgs/projects/travel-app2.png"
-                        alt="Travel Agency Web App Screenshot 2nd">
+                        alt="Travel Agency Web App Screenshot 2">
                 </div>
                 <div class="description">
-                    <h2 id="project-title">Project Title 1</h2>
-                    <p id="project-description">Description of Project 1.</p>
+                    <h2 id="project-title">Chat Web App</h2>
+                    <p id="project-description">A real-time chat application built with React and Firebase, featuring user authentication and live messaging.</p>
                     <div class="controls">
                         <button class="sm-btn" id="prev">Previous</button>
                         <button class="sm-btn" id="next">Next</button>
@@ -89,37 +96,50 @@
             </div>
         </section>
 
-        <!-- <section id="projects">
-                <div class="wrapper">
-                    <div class="card">
-                        <div class="slider">
-                            <img class="slider-image active" src="./assets/imgs/projects/chat-app.png" alt="Chat Web App Screenshot">
-                            <img class="slider-image" src="./assets/imgs/projects/chat-app2.png" alt="Chat Web App Screenshot 2nd">
-                            <img class="slider-image" src="./assets/imgs/projects/chat-app3.png" alt="Chat Web App Screenshot 3rd">
-                            <button class="slider-btn prev"><img src="./assets/icons/arrow.svg" width="10" height="10" alt="arrow icon"></button>
-                            <button class="slider-btn next"><img src="./assets/icons/arrow.svg" width="10" height="10" alt="arrow icon"></button>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Project Title 1</h3>
-                            <p class="card-description">Brief description of the project.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="slider">
-                            <img class="slider-image active" src="./assets/imgs/projects/travel-app.png" alt="Travel Agency Web App Screenshot">
-                            <img class="slider-image" src="./assets/imgs/projects/travel-app2.png" alt="Travel Agency Web App Screenshot 2nd">
-                            <img class="slider-image" src="./assets/imgs/projects/travel-app3.png" alt="Travel Agency Web App Screenshot 3rd">
-                            <button class="slider-btn prev"><img src="./assets/icons/arrow.svg" width="10" height="10" alt="arrow icon"></button>
-                            <button class="slider-btn next"><img src="./assets/icons/arrow.svg" width="10" height="10" alt="arrow icon"></button>
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Project Title 2</h3>
-                            <p class="card-description">Brief description of the project.</p>
-                        </div>
-                    </div>
+        <section id="skills">
+            <h1>Skills</h1>
+            <div class="skills-wrapper">
+                <div class="skills-group">
+                    <h3>Frontend</h3>
+                    <ul class="skills-list" id="frontend-skills"></ul>
                 </div>
-            </section> -->
+                <div class="skills-group">
+                    <h3>Backend</h3>
+                    <ul class="skills-list" id="backend-skills"></ul>
+                </div>
+            </div>
+        </section>
 
+        <section id="contacts">
+            <h1>Contact</h1>
+            <p class="contacts-tagline">Got a project in mind? Let's talk.</p>
+            <div class="contacts-links">
+                <a href="mailto:akzhol@example.com" class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">akzhol@example.com</span>
+                </a>
+                <a href="https://github.com/" target="_blank" class="contact-item">
+                    <span class="contact-label">GitHub</span>
+                    <span class="contact-value">github.com/akzhol</span>
+                </a>
+                <a href="https://linkedin.com/" target="_blank" class="contact-item">
+                    <span class="contact-label">LinkedIn</span>
+                    <span class="contact-value">linkedin.com/in/akzhol</span>
+                </a>
+            </div>
+        </section>
+
+        <footer id="credits">
+            <h2>Credits</h2>
+            <ul class="credits-list">
+                <li>Font: <strong>One Piece</strong> — custom display typeface</li>
+                <li>Font: <strong>Poppins</strong> & <strong>Space Grotesk</strong> — Google Fonts</li>
+                <li>Background animation: Canvas API particle system</li>
+                <li>Icons: Custom SVG icon set</li>
+                <li>Built with vanilla HTML, CSS & JavaScript</li>
+            </ul>
+            <p class="credits-copy">&copy; 2025 Akzhol Kasymov</p>
+        </footer>
     </main>
 
     <script src="/scripts/animate.js"></script>
