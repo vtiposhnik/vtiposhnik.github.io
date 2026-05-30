@@ -15,16 +15,16 @@ const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDark)) {
     document.body.classList.add('dark');
-    darkToggle.textContent = '○';
+    // darkToggle.textContent = '○';
 }
 
 darkToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    const isDark = document.body.classList.contains('dark');
-    darkToggle.textContent = isDark ? '○' : '●';
+    const isDark = document.body.classList.toggle('dark');
+
+    darkToggle.style.fill = isDark ? 'white' : 'black';
+
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
-
 /* =============================================== CUSTOM CURSOR =============================================== */
 
 const cursorDot = document.getElementById('cursor-dot');

@@ -20,7 +20,7 @@
 }
 
 @font-face {
-    font-family: 'Space Grotesk';
+    font-family: 'Space Grotesk', sans-serif;;
     font-style: normal;
     font-weight: normal;
     src: url('/assets/fonts/SpaceGrotesk-Regular.ttf') format('truetype');
@@ -121,11 +121,16 @@ body {
     cursor: none;
     transition: opacity 0.2s, transform 0.2s;
     line-height: 1;
+
+    width: 20px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+    overflow: visible;
 }
 
 .dark-btn:hover {
     opacity: 1;
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 /* =============================================== SCROLL REVEAL =============================================== */
@@ -241,7 +246,6 @@ header {
     }
 
     .nav-list li:last-child {
-        margin-left: 0.5rem;
         padding-left: 0.75rem;
         border-left: 1px solid var(--border-subtle);
     }
@@ -335,7 +339,7 @@ header {
 #exp {
     min-height: 100vh;
     width: 100%;
-    font-family: 'Space Grotesk';
+    font-family: 'Space Grotesk', sans-serif;;
     font-size: 16px;
     line-height: 23px;
     display: flex;
@@ -358,7 +362,7 @@ header {
     }
 
     .scroll-line {
-        width: 0px;
+        width: 0;
         opacity: 0.5;
         border: 1.5px solid var(--text);
         border-radius: var(--border-rd);
@@ -471,7 +475,7 @@ header {
         }
 
         p {
-            font-family: 'Space Grotesk';
+            font-family: 'Space Grotesk', sans-serif;;
             font-size: 0.95rem;
             line-height: 1.55;
             white-space: normal;
@@ -486,7 +490,7 @@ header {
         flex-wrap: wrap;
 
         span {
-            font-family: 'Space Grotesk';
+            font-family: 'Space Grotesk', sans-serif;;
             font-size: 0.78rem;
             border: 1px solid rgba(255,255,255,0.6);
             border-radius: 2rem;
@@ -524,7 +528,7 @@ header {
     .skills-group {
         flex: 1;
         min-width: 200px;
-        font-family: 'Space Grotesk';
+        font-family: 'Space Grotesk', sans-serif;;
 
         h3 {
             font-size: 1.3rem;
@@ -576,7 +580,7 @@ header {
     }
 
     .contacts-tagline {
-        font-family: 'Space Grotesk';
+        font-family: 'Space Grotesk', sans-serif;
         font-size: 1.2rem;
         opacity: 0.6;
         margin-bottom: 3rem;
@@ -595,7 +599,7 @@ header {
         display: flex;
         align-items: baseline;
         gap: 2rem;
-        font-family: 'Space Grotesk';
+        font-family: 'Space Grotesk', sans-serif;;
         padding-bottom: 1.2rem;
         border-bottom: 1px solid var(--border-subtle);
         transition: opacity 0.2s;
@@ -623,7 +627,7 @@ header {
     width: 100%;
     padding: 4rem 10vw;
     border-top: 1px solid var(--border-subtle);
-    font-family: 'Space Grotesk';
+    font-family: 'Space Grotesk', sans-serif;;
 
     h2 {
         font-size: 2rem;
@@ -674,7 +678,7 @@ header {
     flex-direction: column;
     align-items: center;
     gap: 0.4rem;
-    font-family: 'Space Grotesk';
+    font-family: 'Space Grotesk', sans-serif;;
     font-size: 0.75rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
