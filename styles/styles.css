@@ -169,6 +169,7 @@ a:hover,
 a:active {
     text-decoration: none;
     color: inherit;
+    cursor: none;
 }
 
 li:not(.exp-ul > li) {
