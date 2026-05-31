@@ -1,32 +1,4 @@
-@font-face {
-    font-family: 'One Piece';
-    src: url('/assets/fonts/OnePiece.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Poppins Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Poppins Regular'), url('/assets/fonts/Poppins-Regular.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Poppins ExtraLight';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Poppins ExtraLight'), url('/assets/fonts/Poppins-ExtraLight.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Space Grotesk', sans-serif;;
-    font-style: normal;
-    font-weight: normal;
-    src: url('/assets/fonts/SpaceGrotesk-Regular.ttf') format('truetype');
-}
-
-
+@import "./fonts.css";
 
 :root {
     --border-rd: 1rem;
@@ -284,13 +256,19 @@ header {
     align-items: center;
 
     .hero-inner {
-        position: relative;
+        /*position: relative;*/
         z-index: 2;
-        padding-left: 10vw;
-        max-width: 55vw;
+        /*padding-left: 10vw;*/
+        /*max-width: 55vw;*/
+        margin: 0 auto;
     }
 
     .text-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
         h2 {
             font-size: clamp(3.5rem, 7vw, 100px);
             text-transform: uppercase;
@@ -307,6 +285,8 @@ header {
         }
 
         p {
+            display: none;
+            text-align: center;
             font-size: clamp(0.85rem, 1.3vw, 18px);
             white-space: normal;
             margin-top: 0.75rem;
