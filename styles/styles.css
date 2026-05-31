@@ -285,7 +285,7 @@ header {
         }
 
         p {
-            display: none;
+            display: block;
             text-align: center;
             font-size: clamp(0.85rem, 1.3vw, 18px);
             white-space: normal;
@@ -845,5 +845,189 @@ header .nav-list a.nav-active::after {
 
     #projects .project-card {
         aspect-ratio: 4 / 3;
+    }
+}
+
+/* =============================================== SCROLL PROGRESS BAR =============================================*/
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: var(--text);
+    z-index: 9999;
+    transition: width 0.08s linear;
+    pointer-events: none;
+}
+
+/* =============================================== HERO CTA BUTTONS =============================================*/
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cta-btn {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.88rem;
+    padding: 0.6rem 1.7rem;
+    border-radius: 2rem;
+    letter-spacing: 0.04em;
+    transition: background 0.22s, color 0.22s, opacity 0.22s, border-color 0.22s;
+    white-space: nowrap;
+}
+
+.cta-primary {
+    background: var(--text);
+    color: var(--bg);
+}
+
+.cta-primary:hover {
+    opacity: 0.72;
+}
+
+.cta-secondary {
+    border: 1.5px solid var(--border-subtle);
+}
+
+.cta-secondary:hover {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+}
+
+/* =============================================== EXPERIENCE TWO-COLUMN =============================================*/
+.scroll-line {
+    position: relative;
+}
+
+#timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    width: 9px;
+    height: 9px;
+    background: var(--text);
+    border-radius: 50%;
+    pointer-events: none;
+    transition: top 0.15s linear;
+}
+
+.exp-info {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.exp-meta {
+    padding-top: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.exp-period {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.76rem;
+    opacity: 0.45;
+    line-height: 1.6;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+}
+
+.exp-badge {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.68rem;
+    opacity: 0.38;
+    border: 1px solid var(--border-subtle);
+    border-radius: 2rem;
+    padding: 0.1rem 0.6rem;
+    width: fit-content;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+}
+
+.exp-body > h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    white-space: normal;
+}
+
+.exp-role {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.83rem;
+    opacity: 0.5;
+    margin-bottom: 0.8rem;
+}
+
+/* =============================================== SKILLS BAR LIST =============================================*/
+.skills-list {
+    display: block !important;
+}
+
+.skill-row {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 1.2rem;
+}
+
+.skill-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.93rem;
+    white-space: nowrap;
+}
+
+.skill-bar-track {
+    height: 1.5px;
+    background: var(--border-subtle);
+    border-radius: 1px;
+    overflow: hidden;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    background: var(--text);
+    border-radius: 1px;
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1) calc(var(--i, 0) * 75ms);
+}
+
+.skill-row.visible .skill-bar-fill {
+    transform: scaleX(1);
+}
+
+/* =============================================== PARALLAX HEADINGS =============================================*/
+#exp > h1,
+#projects > h1,
+#skills > h1,
+#contacts > h1 {
+    will-change: transform;
+}
+
+/* =============================================== MOBILE ADDITIONS =============================================*/
+@media (max-width: 768px) {
+    .exp-info {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+    }
+
+    .exp-meta {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .hero-cta {
+        justify-content: flex-start;
     }
 }

@@ -2,26 +2,22 @@
     "frontend": {
         "name": "Akzhol Kasymov",
         "skills": [
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "React"
+            { "name": "HTML",       "level": 95 },
+            { "name": "CSS",        "level": 91 },
+            { "name": "JavaScript", "level": 87 },
+            { "name": "React",      "level": 84 }
         ],
         "experience": "1+ years of experience in front-end development."
     },
     "backend": {
         "name": "Akzhol Kasymov",
         "skills": [
-            "Node js",
-            "Express",
-            "JavaScript/Typescript",
-            {
-                "DBMS": [
-                    "MySQL",
-                    "MongoDB",
-                    "Firebase Firestore"
-                ]
-            }
+            { "name": "Node.js",    "level": 72 },
+            { "name": "Express",    "level": 68 },
+            { "name": "TypeScript", "level": 76 },
+            { "name": "MySQL",      "level": 62 },
+            { "name": "MongoDB",    "level": 66 },
+            { "name": "Firebase",   "level": 71 }
         ],
         "experience": "0.5 years of experience in backend development."
     }

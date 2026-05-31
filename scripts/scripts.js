@@ -130,6 +130,19 @@ if (scrollHint) {
 
 /* =============================================== SKILLS =============================================== */
 
+function buildSkillRow(skill, index) {
+    const li = document.createElement('li');
+    li.className = 'skill-row reveal';
+    li.style.setProperty('--i', index);
+    const levelFraction = (skill.level || 80) / 100;
+    li.innerHTML = `
+        <span class="skill-name">${skill.name}</span>
+        <div class="skill-bar-track">
+            <div class="skill-bar-fill" style="width:${skill.level || 80}%"></div>
+        </div>`;
+    return li;
+}
+
 async function loadSkills() {
     try {
         const res = await fetch('/assets/about.json');
@@ -140,24 +153,13 @@ async function loadSkills() {
         const backendList = document.getElementById('backend-skills');
 
         data.frontend.skills.forEach((skill, i) => {
-            const li = document.createElement('li');
-            li.className = 'skill-tag reveal';
-            li.style.transitionDelay = `${i * 80}ms`;
-            li.textContent = skill;
+            const li = buildSkillRow(skill, i);
             frontendList.appendChild(li);
             revealObserver.observe(li);
         });
 
         data.backend.skills.forEach((skill, i) => {
-            const li = document.createElement('li');
-            li.className = 'skill-tag reveal';
-            li.style.transitionDelay = `${i * 80}ms`;
-            if (typeof skill === 'object') {
-                const key = Object.keys(skill)[0];
-                li.textContent = key + ': ' + skill[key].join(', ');
-            } else {
-                li.textContent = skill;
-            }
+            const li = buildSkillRow(skill, i);
             backendList.appendChild(li);
             revealObserver.observe(li);
         });
@@ -167,3 +169,48 @@ async function loadSkills() {
 }
 
 loadSkills();
+
+/* =============================================== SCROLL PROGRESS BAR =============================================== */
+
+const scrollProgressBar = document.getElementById('scroll-progress');
+
+window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    if (maxScroll > 0) {
+        scrollProgressBar.style.width = `${(scrolled / maxScroll) * 100}%`;
+    }
+}, { passive: true });
+
+/* =============================================== EXPERIENCE TIMELINE DOT =============================================== */
+
+const timelineDot = document.getElementById('timeline-dot');
+const expSection = document.getElementById('exp');
+const scrollLineEl = document.querySelector('.scroll-line');
+
+if (timelineDot && expSection && scrollLineEl) {
+    window.addEventListener('scroll', () => {
+        const expRect = expSection.getBoundingClientRect();
+        const lineHeight = scrollLineEl.offsetHeight;
+        const sectionScrollable = expSection.offsetHeight - window.innerHeight;
+        const scrolledIntoSection = -expRect.top;
+        const progress = Math.max(0, Math.min(1, scrolledIntoSection / Math.max(sectionScrollable, 1)));
+        timelineDot.style.top = `${progress * lineHeight}px`;
+    }, { passive: true });
+}
+
+/* =============================================== PARALLAX HEADINGS =============================================== */
+
+const parallaxHeadings = document.querySelectorAll('#exp > h1, #projects > h1, #skills > h1, #contacts > h1');
+
+function tickParallax() {
+    const scrollY = window.scrollY;
+    parallaxHeadings.forEach(h1 => {
+        const section = h1.closest('section') || h1.parentElement;
+        const offset = (scrollY - section.offsetTop) * 0.05;
+        h1.style.transform = `translateY(${offset}px)`;
+    });
+    requestAnimationFrame(tickParallax);
+}
+
+tickParallax();

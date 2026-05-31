@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/styles.css?v=3" />
     <link rel="stylesheet" href="/styles/pie-chart.css" />
     <title>Portfolio</title>
 </head>
 
 <body>
+    <div id="scroll-progress"></div>
     <div id="page-loader"></div>
     <div id="cursor-dot"></div>
     <div id="cursor-ring"></div>
@@ -23,11 +24,11 @@
                 <li><a href="#contacts">Contact</a></li>
                 <li><a href="#credits">Credits</a></li>
                 <li>
-					<svg id="dark-toggle" class="dark-btn" aria-label="Toggle dark mode" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="initial">
-						<g id="Lager_94" data-name="Lager 94" transform="translate(0)">
-							<path id="Path_70" data-name="Path 70" d="M12.516,4.509A12,12,0,0,0,22.3,19.881,12.317,12.317,0,0,0,24,20a11.984,11.984,0,0,0,3.49-.514,12.1,12.1,0,0,1-9.963,8.421A12.679,12.679,0,0,1,16,28,12,12,0,0,1,12.516,4.509M16,0a16.5,16.5,0,0,0-2.212.15A16,16,0,0,0,16,32a16.526,16.526,0,0,0,2.01-.123A16.04,16.04,0,0,0,31.85,18.212,16.516,16.516,0,0,0,32,15.944,1.957,1.957,0,0,0,30,14a2.046,2.046,0,0,0-1.23.413A7.942,7.942,0,0,1,24,16a8.35,8.35,0,0,1-1.15-.08,7.995,7.995,0,0,1-5.264-12.7A2.064,2.064,0,0,0,16.056,0Z"/>
-						</g>
-					</svg></li>
+                                        <svg id="dark-toggle" class="dark-btn" aria-label="Toggle dark mode" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="initial">
+                                                <g id="Lager_94" data-name="Lager 94" transform="translate(0)">
+                                                        <path id="Path_70" data-name="Path 70" d="M12.516,4.509A12,12,0,0,0,22.3,19.881,12.317,12.317,0,0,0,24,20a11.984,11.984,0,0,0,3.49-.514,12.1,12.1,0,0,1-9.963,8.421A12.679,12.679,0,0,1,16,28,12,12,0,0,1,12.516,4.509M16,0a16.5,16.5,0,0,0-2.212.15A16,16,0,0,0,16,32a16.526,16.526,0,0,0,2.01-.123A16.04,16.04,0,0,0,31.85,18.212,16.516,16.516,0,0,0,32,15.944,1.957,1.957,0,0,0,30,14a2.046,2.046,0,0,0-1.23.413A7.942,7.942,0,0,1,24,16a8.35,8.35,0,0,1-1.15-.08,7.995,7.995,0,0,1-5.264-12.7A2.064,2.064,0,0,0,16.056,0Z"/>
+                                                </g>
+                                        </svg></li>
             </ul>
         </nav>
     </header>
@@ -41,6 +42,10 @@
                     <h2 class="reveal">Akzhol Kasymov</h2>
                     <span id="typewriter" class="reveal">Web Developer</span>
                     <p class="reveal">Genius(no), Billionaire(sure), Playboy(ask my homies?), Philanthropist(what is that?)</p>
+                    <div class="hero-cta reveal">
+                        <a href="#contacts" class="cta-btn cta-primary">Get in touch</a>
+                        <a href="#projects" class="cta-btn cta-secondary">See my work</a>
+                    </div>
                 </div>
             </div>
 <!--            <div class="hero-pic reveal">-->
@@ -55,34 +60,54 @@
         <section id="exp">
             <h1 class="reveal">Experience</h1>
             <div class="wrapper">
-                <aside class="scroll-line"></aside>
+                <aside class="scroll-line">
+                    <span id="timeline-dot"></span>
+                </aside>
                 <article class="exp-content">
                     <div class="exp-info reveal">
-                        <h3>Solva Technology (Internship)</h3>
-                        <span>Frontend Developer / Jan 2025 – Present</span>
-                        <ul class="exp-ul">
-                            <li>Built and maintained React-based features for an enterprise fintech platform</li>
-                            <li>Collaborated with design and backend teams using Agile methodology</li>
-                            <li>Wrote reusable UI components and improved codebase consistency</li>
-                        </ul>
+                        <div class="exp-meta">
+                            <span class="exp-period">Jan 2025<br>Present</span>
+                            <span class="exp-badge">Internship</span>
+                        </div>
+                        <div class="exp-body">
+                            <h3>Solva Technology</h3>
+                            <span class="exp-role">Frontend Developer</span>
+                            <ul class="exp-ul">
+                                <li>Built and maintained React-based features for an enterprise fintech platform</li>
+                                <li>Collaborated with design and backend teams using Agile methodology</li>
+                                <li>Wrote reusable UI components and improved codebase consistency</li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="exp-info reveal">
-                        <h3>ICEBERG-Service</h3>
-                        <span>Frontend Developer / September 2024 – December 2024</span>
-                        <ul class="exp-ul">
-                            <li>Developed responsive UI for a service-management web application</li>
-                            <li>Integrated REST APIs and handled async data fetching with React hooks</li>
-                            <li>Optimized performance by reducing unnecessary re-renders</li>
-                        </ul>
+                        <div class="exp-meta">
+                            <span class="exp-period">Sep 2024<br>Dec 2024</span>
+                            <span class="exp-badge">Full-time</span>
+                        </div>
+                        <div class="exp-body">
+                            <h3>ICEBERG-Service</h3>
+                            <span class="exp-role">Frontend Developer</span>
+                            <ul class="exp-ul">
+                                <li>Developed responsive UI for a service-management web application</li>
+                                <li>Integrated REST APIs and handled async data fetching with React hooks</li>
+                                <li>Optimized performance by reducing unnecessary re-renders</li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="exp-info reveal">
-                        <h3>AitecOne (Internship)</h3>
-                        <span>Frontend Developer / Jan 2023 – March 2024</span>
-                        <ul class="exp-ul">
-                            <li>Assisted in building and styling multi-page websites from Figma designs</li>
-                            <li>Gained hands-on experience with version control (Git) and code review</li>
-                            <li>Learned fundamentals of component-based architecture with React</li>
-                        </ul>
+                        <div class="exp-meta">
+                            <span class="exp-period">Jan 2023<br>Mar 2024</span>
+                            <span class="exp-badge">Internship</span>
+                        </div>
+                        <div class="exp-body">
+                            <h3>AitecOne</h3>
+                            <span class="exp-role">Frontend Developer</span>
+                            <ul class="exp-ul">
+                                <li>Assisted in building and styling multi-page websites from Figma designs</li>
+                                <li>Gained hands-on experience with version control (Git) and code review</li>
+                                <li>Learned fundamentals of component-based architecture with React</li>
+                            </ul>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -162,8 +187,8 @@
         </footer>
     </main>
 
-    <script src="/scripts/animate.js"></script>
-    <script src="/scripts/scripts.js"></script>
+    <script src="/scripts/animate.js?v=3"></script>
+    <script src="/scripts/scripts.js?v=3"></script>
 </body>
 
 </html>
