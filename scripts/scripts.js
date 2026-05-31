@@ -145,7 +145,7 @@ function buildSkillRow(skill, index) {
 
 async function loadSkills() {
     try {
-        const res = await fetch('/assets/about.json');
+        const res = await fetch('/assets/about.json?v=3');
         if (!res.ok) throw new Error('Could not load skills data');
         const data = await res.json();
 
@@ -192,9 +192,9 @@ if (timelineDot && expSection && scrollLineEl) {
     window.addEventListener('scroll', () => {
         const expRect = expSection.getBoundingClientRect();
         const lineHeight = scrollLineEl.offsetHeight;
-        const sectionScrollable = expSection.offsetHeight - window.innerHeight;
-        const scrolledIntoSection = -expRect.top;
-        const progress = Math.max(0, Math.min(1, scrolledIntoSection / Math.max(sectionScrollable, 1)));
+        const totalTravel = expSection.offsetHeight + window.innerHeight;
+        const traveled = window.innerHeight - expRect.top;
+        const progress = Math.max(0, Math.min(1, traveled / totalTravel));
         timelineDot.style.top = `${progress * lineHeight}px`;
     }, { passive: true });
 }
@@ -207,7 +207,7 @@ function tickParallax() {
     const scrollY = window.scrollY;
     parallaxHeadings.forEach(h1 => {
         const section = h1.closest('section') || h1.parentElement;
-        const offset = (scrollY - section.offsetTop) * 0.05;
+        const offset = (scrollY - section.offsetTop) * 0.018;
         h1.style.transform = `translateY(${offset}px)`;
     });
     requestAnimationFrame(tickParallax);
