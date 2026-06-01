@@ -199,6 +199,16 @@ if (timelineDot && expSection && scrollLineEl) {
     }, { passive: true });
 }
 
+/* =============================================== CANVAS SCROLL BLUR =============================================== */
+
+const bgCanvas = document.getElementById('canva');
+if (bgCanvas) {
+    window.addEventListener('scroll', () => {
+        const blurProgress = Math.min(window.scrollY / 700, 1);
+        bgCanvas.style.filter = `blur(${(blurProgress * 2).toFixed(2)}px)`;
+    }, { passive: true });
+}
+
 /* =============================================== PARALLAX HEADINGS =============================================== */
 
 const parallaxHeadings = document.querySelectorAll('#exp > h1, #projects > h1, #skills > h1, #contacts > h1');
