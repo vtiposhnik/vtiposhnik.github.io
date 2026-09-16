@@ -7,7 +7,7 @@
             { "name": "JavaScript", "level": 87 },
             { "name": "React",      "level": 84 }
         ],
-        "experience": "1+ years of experience in front-end development."
+        "experience": "2 years of experience in frontend development."
     },
     "backend": {
         "name": "Akzhol Kasymov",
@@ -19,6 +19,6 @@
             { "name": "MongoDB",    "level": 66 },
             { "name": "Firebase",   "level": 71 }
         ],
-        "experience": "0.5 years of experience in backend development."
+        "experience": "Currently expanding into backend systems, BFF architecture, and game development."
     }
 }

@@ -477,7 +477,8 @@ header {
         color: #fff;
         opacity: 0;
         transform: translateY(10px);
-        transition: opacity 0.4s ease, transform 0.4s ease;
+        visibility: hidden;
+        transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s linear 0.4s;
         z-index: 3;
         pointer-events: none;
 
@@ -498,6 +499,13 @@ header {
         }
     }
 
+    .project-card:hover .project-overlay,
+    .project-card:focus-within .project-overlay {
+        pointer-events: auto;
+        visibility: visible;
+        transition-delay: 0s;
+    }
+
     .project-tags {
         display: flex;
         gap: 0.5rem;
@@ -512,6 +520,28 @@ header {
             white-space: nowrap;
             opacity: 0.85;
         }
+    }
+
+    .project-links {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.78rem;
+    }
+
+    .project-link {
+        color: #fff;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        white-space: nowrap;
+    }
+
+    .project-link-placeholder {
+        opacity: 0.65;
+        text-decoration: none;
     }
 }
 
@@ -957,6 +987,16 @@ header .nav-list a.nav-active::after {
     border-color: var(--text);
 }
 
+.hero-status {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    opacity: 0.48;
+    margin-top: 0.85rem;
+    white-space: normal;
+    text-align: center;
+}
+
 /* =============================================== EXPERIENCE TWO-COLUMN =============================================*/
 .scroll-line {
     position: relative;
@@ -1087,6 +1127,22 @@ header .nav-list a.nav-active::after {
 
     .hero-cta {
         justify-content: flex-start;
+    }
+
+    #projects .project-card img {
+        filter: brightness(0.42);
+    }
+
+    #projects .project-overlay {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+        pointer-events: auto;
+        background: linear-gradient(180deg, transparent 5%, rgba(0, 0, 0, 0.82) 58%);
+    }
+
+    #projects .project-num {
+        opacity: 0;
     }
 }
 

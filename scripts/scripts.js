@@ -73,25 +73,8 @@ document.querySelectorAll('a, button').forEach(el => {
 /* =============================================== TYPEWRITER =============================================== */
 
 const typewriterEl = document.getElementById('typewriter');
-const typewriterText = 'Web Developer';
-let twIndex = 0;
-
-function typeNext() {
-    if (twIndex <= typewriterText.length) {
-        typewriterEl.textContent = typewriterText.slice(0, twIndex);
-        twIndex++;
-        setTimeout(typeNext, 85);
-    }
-}
-
-if (reduceMotion) {
-    typewriterEl.textContent = typewriterText;
-} else {
-    setTimeout(() => {
-        typewriterEl.textContent = '';
-        typeNext();
-    }, 650);
-}
+const typewriterText = 'Software Engineer · Frontend';
+typewriterEl.textContent = typewriterText;
 
 /* =============================================== SCROLL REVEAL =============================================== */
 
@@ -163,7 +146,7 @@ function buildSkillRow(skill, index) {
 
 async function loadSkills() {
     try {
-        const res = await fetch('/assets/about.json?v=3');
+        const res = await fetch('/assets/about.json?v=4');
         if (!res.ok) throw new Error('Could not load skills data');
         const data = await res.json();
 
