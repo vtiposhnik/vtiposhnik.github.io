@@ -1,22 +1,26 @@
 const canvas = document.getElementById('canva');
 const ctx = canvas.getContext('2d');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+let mouse = {
+    x: null,
+    y: null,
+    radius: 0
+};
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = document.body.scrollHeight;
+    mouse.radius = (canvas.width / 80) * (canvas.height / 80);
 }
 
 resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
 
 let particlesArr;
 let burstArr = [];
-
-let mouse = {
-    x: null,
-    y: null,
-    radius: (canvas.width / 80) * (canvas.height / 80)
-};
+let animationId = null;
+let animationRunning = false;
+let canvasVisible = true;
 
 window.addEventListener('mousemove', function (event) {
     mouse.x = event.x;
@@ -86,6 +90,8 @@ class BurstParticle {
 }
 
 window.addEventListener('click', (e) => {
+    if (prefersReducedMotion || !hasFinePointer || !particlesArr) return;
+
     const clickX = e.clientX;
     const clickY = e.clientY + window.scrollY;
 
@@ -99,15 +105,17 @@ window.addEventListener('click', (e) => {
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 130 && dist > 0) {
             const force = ((130 - dist) / 130) * 3.5;
-            p.directionX += (dx / dist) * force;
-            p.directionY += (dy / dist) * force;
+            p.directionX = Math.max(-2.5, Math.min(2.5, p.directionX + (dx / dist) * force));
+            p.directionY = Math.max(-2.5, Math.min(2.5, p.directionY + (dy / dist) * force));
         }
     });
 });
 
 function init() {
     particlesArr = [];
-    let numberOfParticles = Math.floor((canvas.width * canvas.height) / 8000);
+    const densityBasedCount = Math.floor((canvas.width * canvas.height) / 8000);
+    const maxParticles = canvas.width < 768 ? 80 : 240;
+    const numberOfParticles = Math.min(densityBasedCount, maxParticles);
     for (let i = 0; i < numberOfParticles; i++) {
         let radius = (Math.random() * 2) + 1;
         let x = Math.random() * (canvas.width - radius * 2);
@@ -119,7 +127,12 @@ function init() {
 }
 
 function animate() {
-    requestAnimationFrame(animate);
+    if (!animationRunning) {
+        animationId = null;
+        return;
+    }
+
+    animationId = requestAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let i = 0; i < particlesArr.length; i++) {
@@ -135,5 +148,41 @@ function animate() {
     }
 }
 
+function startAnimation() {
+    if (prefersReducedMotion || animationRunning || !canvasVisible || document.hidden) return;
+    animationRunning = true;
+    animate();
+}
+
+function stopAnimation() {
+    animationRunning = false;
+    if (animationId !== null) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+    }
+}
+
 init();
-animate();
+
+if (prefersReducedMotion) {
+    canvas.style.display = 'none';
+} else {
+    const canvasObserver = new IntersectionObserver(([entry]) => {
+        canvasVisible = entry.isIntersecting;
+        if (canvasVisible) startAnimation();
+        else stopAnimation();
+    }, { threshold: 0 });
+
+    canvasObserver.observe(canvas);
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stopAnimation();
+        else startAnimation();
+    });
+
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        init();
+    }, { passive: true });
+
+    startAnimation();
+}

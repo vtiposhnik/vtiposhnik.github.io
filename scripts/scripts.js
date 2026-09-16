@@ -1,6 +1,7 @@
 /* =============================================== PAGE ENTRANCE =============================================== */
 
 const loader = document.getElementById('page-loader');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 window.addEventListener('load', () => {
     setTimeout(() => {
         loader.classList.add('loaded');
@@ -12,17 +13,24 @@ window.addEventListener('load', () => {
 
 const darkToggle = document.getElementById('dark-toggle');
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const storedTheme = localStorage.getItem('theme');
+const initialDarkMode = storedTheme === 'dark' || (!storedTheme && prefersDark);
 
-if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDark)) {
+if (initialDarkMode) {
     document.body.classList.add('dark');
-    // darkToggle.textContent = '○';
 }
+
+function updateThemeControl(isDark) {
+    darkToggle.setAttribute('aria-pressed', String(isDark));
+    darkToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    darkToggle.style.color = isDark ? 'white' : 'black';
+}
+
+updateThemeControl(initialDarkMode);
 
 darkToggle.addEventListener('click', () => {
     const isDark = document.body.classList.toggle('dark');
-
-    darkToggle.style.fill = isDark ? 'white' : 'black';
-
+    updateThemeControl(isDark);
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 /* =============================================== CUSTOM CURSOR =============================================== */
@@ -76,10 +84,14 @@ function typeNext() {
     }
 }
 
-setTimeout(() => {
-    typewriterEl.textContent = '';
-    typeNext();
-}, 650);
+if (reduceMotion) {
+    typewriterEl.textContent = typewriterText;
+} else {
+    setTimeout(() => {
+        typewriterEl.textContent = '';
+        typeNext();
+    }, 650);
+}
 
 /* =============================================== SCROLL REVEAL =============================================== */
 
@@ -91,7 +103,13 @@ const revealObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.15 });
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+document.querySelectorAll('.reveal').forEach(el => {
+    if (reduceMotion) {
+        el.classList.add('visible');
+    } else {
+        revealObserver.observe(el);
+    }
+});
 
 /* =============================================== ACTIVE NAV =============================================== */
 
@@ -155,13 +173,15 @@ async function loadSkills() {
         data.frontend.skills.forEach((skill, i) => {
             const li = buildSkillRow(skill, i);
             frontendList.appendChild(li);
-            revealObserver.observe(li);
+            if (reduceMotion) li.classList.add('visible');
+            else revealObserver.observe(li);
         });
 
         data.backend.skills.forEach((skill, i) => {
             const li = buildSkillRow(skill, i);
             backendList.appendChild(li);
-            revealObserver.observe(li);
+            if (reduceMotion) li.classList.add('visible');
+            else revealObserver.observe(li);
         });
     } catch (error) {
         console.error('Skills load error:', error);
@@ -181,6 +201,7 @@ window.addEventListener('scroll', () => {
         scrollProgressBar.style.width = `${(scrolled / maxScroll) * 100}%`;
     }
 }, { passive: true });
+window.dispatchEvent(new Event('scroll'));
 
 /* =============================================== EXPERIENCE TIMELINE DOT =============================================== */
 
@@ -204,6 +225,7 @@ if (timelineDot && expSection && scrollLineEl) {
 const bgCanvas = document.getElementById('canva');
 if (bgCanvas) {
     window.addEventListener('scroll', () => {
+        if (reduceMotion) return;
         const blurProgress = Math.min(window.scrollY / 700, 1);
         bgCanvas.style.filter = `blur(${(blurProgress * 2).toFixed(2)}px)`;
     }, { passive: true });
@@ -211,16 +233,20 @@ if (bgCanvas) {
 
 /* =============================================== PARALLAX HEADINGS =============================================== */
 
-const parallaxHeadings = document.querySelectorAll('#exp > h1, #projects > h1, #skills > h1, #contacts > h1');
+const parallaxHeadings = document.querySelectorAll('#exp > h2, #projects > h2, #skills > h2, #contacts > h2');
 
 function tickParallax() {
+    if (reduceMotion) return;
     const scrollY = window.scrollY;
-    parallaxHeadings.forEach(h1 => {
-        const section = h1.closest('section') || h1.parentElement;
+    parallaxHeadings.forEach(heading => {
+        const section = heading.closest('section') || heading.parentElement;
         const offset = (scrollY - section.offsetTop) * 0.018;
-        h1.style.transform = `translateY(${offset}px)`;
+        heading.style.transform = `translateY(${offset}px)`;
     });
     requestAnimationFrame(tickParallax);
 }
 
-tickParallax();
+if (!reduceMotion) tickParallax();
+
+const currentYear = document.getElementById('current-year');
+if (currentYear) currentYear.textContent = new Date().getFullYear();

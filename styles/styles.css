@@ -27,6 +27,9 @@ body.dark {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
     scroll-behavior: smooth;
 }
 
@@ -40,6 +43,24 @@ input[type="reset"] {
     font: inherit;
     cursor: none;
     outline: inherit;
+}
+
+.skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 1rem;
+    z-index: 10001;
+    padding: 0.65rem 1rem;
+    border-radius: 2rem;
+    background: var(--text);
+    color: var(--bg);
+    font-family: 'Space Grotesk', sans-serif;
+    transform: translateY(-160%);
+    transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
 }
 
 body {
@@ -88,16 +109,20 @@ body {
 
 /* =============================================== DARK TOGGLE =============================================== */
 .dark-btn {
-    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     opacity: 0.7;
     cursor: none;
     transition: opacity 0.2s, transform 0.2s;
     line-height: 1;
+    width: 24px;
+    height: 24px;
+}
 
-    width: 20px;
-    vertical-align: middle;
-    padding-bottom: 2px;
-    overflow: visible;
+.dark-btn svg {
+    width: 18px;
+    height: 18px;
 }
 
 .dark-btn:hover {
@@ -136,7 +161,8 @@ main {
     align-items: center;
 }
 
-h1 {
+h1,
+h2 {
     text-align: center;
 }
 
@@ -147,6 +173,12 @@ a:active {
     text-decoration: none;
     color: inherit;
     cursor: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 4px;
 }
 
 li:not(.exp-ul > li) {
@@ -270,7 +302,7 @@ header {
         justify-content: center;
         align-items: center;
 
-        h2 {
+        h1 {
             font-size: clamp(3.5rem, 7vw, 100px);
             text-transform: uppercase;
             white-space: normal;
@@ -327,7 +359,7 @@ header {
     flex-direction: column;
     align-items: center;
 
-    >h1 {
+    >h2 {
         font-family: 'One Piece', sans-serif;
         font-weight: bold;
         text-align: left;
@@ -375,7 +407,7 @@ header {
     align-items: center;
     padding-bottom: 4rem;
 
-    >h1 {
+    >h2 {
         font-weight: bold;
         text-align: left;
         margin: 3.5rem 0;
@@ -492,7 +524,7 @@ header {
     align-items: center;
     padding-bottom: 4rem;
 
-    >h1 {
+    >h2 {
         font-weight: bold;
         text-align: left;
         margin: 3.5rem 0;
@@ -553,7 +585,7 @@ header {
     align-items: center;
     padding-bottom: 4rem;
 
-    >h1 {
+    >h2 {
         font-weight: bold;
         text-align: left;
         margin: 3.5rem 0;
@@ -790,7 +822,7 @@ header .nav-list a.nav-active::after {
         max-width: 90vw;
     }
 
-    #hero .text-box h2 {
+    #hero .text-box h1 {
         font-size: clamp(2.2rem, 11vw, 3.5rem);
     }
 
@@ -807,7 +839,7 @@ header .nav-list a.nav-active::after {
     }
 
     /* Experience */
-    #exp > h1,
+    #exp > h2,
     #exp .wrapper {
         width: 90vw;
     }
@@ -817,7 +849,7 @@ header .nav-list a.nav-active::after {
     }
 
     /* Projects */
-    #projects > h1,
+    #projects > h2,
     #projects .projects-grid {
         width: 90vw;
     }
@@ -827,7 +859,7 @@ header .nav-list a.nav-active::after {
     }
 
     /* Skills */
-    #skills > h1,
+    #skills > h2,
     #skills .skills-wrapper {
         width: 90vw;
     }
@@ -838,7 +870,7 @@ header .nav-list a.nav-active::after {
     }
 
     /* Contact */
-    #contacts > h1,
+    #contacts > h2,
     #contacts .contacts-tagline,
     #contacts .contacts-links {
         width: 90vw;
@@ -864,7 +896,7 @@ header .nav-list a.nav-active::after {
         font-size: 11px;
     }
 
-    #hero .text-box h2 {
+    #hero .text-box h1 {
         font-size: clamp(1.8rem, 12vw, 2.8rem);
     }
 
@@ -1033,10 +1065,10 @@ header .nav-list a.nav-active::after {
 }
 
 /* =============================================== PARALLAX HEADINGS =============================================*/
-#exp > h1,
-#projects > h1,
-#skills > h1,
-#contacts > h1 {
+#exp > h2,
+#projects > h2,
+#skills > h2,
+#contacts > h2 {
     will-change: transform;
 }
 
@@ -1055,5 +1087,30 @@ header .nav-list a.nav-active::after {
 
     .hero-cta {
         justify-content: flex-start;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+
+    .scroll-hint,
+    #canva {
+        display: none;
     }
 }

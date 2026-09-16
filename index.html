@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/styles.css?v=5" />
+    <meta name="description" content="Portfolio of Akzhol Kasymov, a frontend developer building thoughtful web experiences with React, JavaScript, and modern CSS.">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="Akzhol Kasymov — Frontend Developer">
+    <meta property="og:description" content="Explore the work, experience, and skills of frontend developer Akzhol Kasymov.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles/styles.css?v=6" />
     <link rel="stylesheet" href="/styles/pie-chart.css" />
-    <title>Portfolio</title>
+    <title>Akzhol Kasymov — Frontend Developer</title>
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div id="scroll-progress"></div>
     <div id="page-loader"></div>
     <div id="cursor-dot"></div>
     <div id="cursor-ring"></div>
 
     <header>
-        <nav>
+        <nav aria-label="Main navigation">
             <ul class="nav-list">
                 <li><a href="#hero">About</a></li>
                 <li><a href="#exp">Experience</a></li>
@@ -24,22 +31,23 @@
                 <li><a href="#contacts">Contact</a></li>
                 <li><a href="#credits">Credits</a></li>
                 <li>
-                                        <svg id="dark-toggle" class="dark-btn" aria-label="Toggle dark mode" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="initial">
-                                                <g id="Lager_94" data-name="Lager 94" transform="translate(0)">
-                                                        <path id="Path_70" data-name="Path 70" d="M12.516,4.509A12,12,0,0,0,22.3,19.881,12.317,12.317,0,0,0,24,20a11.984,11.984,0,0,0,3.49-.514,12.1,12.1,0,0,1-9.963,8.421A12.679,12.679,0,0,1,16,28,12,12,0,0,1,12.516,4.509M16,0a16.5,16.5,0,0,0-2.212.15A16,16,0,0,0,16,32a16.526,16.526,0,0,0,2.01-.123A16.04,16.04,0,0,0,31.85,18.212,16.516,16.516,0,0,0,32,15.944,1.957,1.957,0,0,0,30,14a2.046,2.046,0,0,0-1.23.413A7.942,7.942,0,0,1,24,16a8.35,8.35,0,0,1-1.15-.08,7.995,7.995,0,0,1-5.264-12.7A2.064,2.064,0,0,0,16.056,0Z"/>
-                                                </g>
-                                        </svg></li>
+                    <button id="dark-toggle" class="dark-btn" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+                        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                            <path d="M12.516,4.509A12,12,0,0,0,22.3,19.881,12.317,12.317,0,0,0,24,20a11.984,11.984,0,0,0,3.49-.514,12.1,12.1,0,0,1-9.963,8.421A12.679,12.679,0,0,1,16,28,12,12,0,0,1,12.516,4.509M16,0a16.5,16.5,0,0,0-2.212.15A16,16,0,0,0,16,32a16.526,16.526,0,0,0,2.01-.123A16.04,16.04,0,0,0,31.85,18.212,16.516,16.516,0,0,0,32,15.944,1.957,1.957,0,0,0,30,14a2.046,2.046,0,0,0-1.23.413A7.942,7.942,0,0,1,24,16a8.35,8.35,0,0,1-1.15-.08,7.995,7.995,0,0,1-5.264-12.7A2.064,2.064,0,0,0,16.056,0Z"/>
+                        </svg>
+                    </button>
+                </li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <canvas id="canva"></canvas>
+    <main id="main-content">
+        <canvas id="canva" aria-hidden="true"></canvas>
 
         <section id="hero">
             <div class="hero-inner">
                 <div class="text-box">
-                    <h2 class="reveal">Akzhol Kasymov</h2>
+                    <h1 class="reveal">Akzhol Kasymov</h1>
                     <span id="typewriter" class="reveal">Web Developer</span>
                     <p class="reveal">Genius(no), Billionaire(sure), Playboy(ask my homies?), Philanthropist(what is that?)</p>
                     <div class="hero-cta reveal">
@@ -58,7 +66,7 @@
         </section>
 
         <section id="exp">
-            <h1 class="reveal">Experience</h1>
+            <h2 class="reveal">Experience</h2>
             <div class="wrapper">
                 <aside class="scroll-line">
                     <span id="timeline-dot"></span>
@@ -114,11 +122,11 @@
         </section>
 
         <section id="projects">
-            <h1 class="reveal">Projects</h1>
+            <h2 class="reveal">Projects</h2>
             <div class="projects-grid">
                 <div class="project-card reveal">
                     <span class="project-num">01</span>
-                    <img src="./assets/imgs/projects/chat-app.png" alt="Chat Web App Screenshot">
+                    <img src="./assets/imgs/projects/chat-app.png" alt="Chat Web App Screenshot" loading="lazy">
                     <div class="project-overlay">
                         <h3>Chat Web App</h3>
                         <p>A real-time chat application built with React and Firebase, featuring user authentication and live messaging.</p>
@@ -129,7 +137,7 @@
                 </div>
                 <div class="project-card reveal">
                     <span class="project-num">02</span>
-                    <img src="./assets/imgs/projects/travel-app.png" alt="Travel Agency App Screenshot">
+                    <img src="./assets/imgs/projects/travel-app.png" alt="Travel Agency App Screenshot" loading="lazy">
                     <div class="project-overlay">
                         <h3>Travel Agency App</h3>
                         <p>A travel agency landing page with destination browsing, booking UI, and a responsive multi-section layout.</p>
@@ -142,7 +150,7 @@
         </section>
 
         <section id="skills">
-            <h1 class="reveal">Skills</h1>
+            <h2 class="reveal">Skills</h2>
             <div class="skills-wrapper">
                 <div class="skills-group reveal">
                     <h3>Frontend</h3>
@@ -156,18 +164,18 @@
         </section>
 
         <section id="contacts">
-            <h1 class="reveal">Contact</h1>
+            <h2 class="reveal">Contact</h2>
             <p class="contacts-tagline reveal">Got a project in mind? Let's talk.</p>
             <div class="contacts-links">
                 <a href="mailto:akzhol@example.com" class="contact-item reveal">
                     <span class="contact-label">Email</span>
                     <span class="contact-value">akzhol@example.com</span>
                 </a>
-                <a href="https://github.com/" target="_blank" class="contact-item reveal">
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="contact-item reveal">
                     <span class="contact-label">GitHub</span>
                     <span class="contact-value">github.com/akzhol</span>
                 </a>
-                <a href="https://linkedin.com/" target="_blank" class="contact-item reveal">
+                <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="contact-item reveal">
                     <span class="contact-label">LinkedIn</span>
                     <span class="contact-value">linkedin.com/in/akzhol</span>
                 </a>
@@ -186,15 +194,15 @@
                     </ul>
                 </div>
                 <div class="credits-right reveal">
-                    <p class="credits-copy">&copy; 2025 Akzhol Kasymov</p>
+                    <p class="credits-copy">&copy; <span id="current-year">2026</span> Akzhol Kasymov</p>
                     <p class="credits-made">Designed &amp; built by hand</p>
                 </div>
             </div>
         </footer>
     </main>
 
-    <script src="/scripts/animate.js?v=5"></script>
-    <script src="/scripts/scripts.js?v=5"></script>
+    <script src="/scripts/animate.js?v=6" defer></script>
+    <script src="/scripts/scripts.js?v=6" defer></script>
 </body>
 
 </html>
